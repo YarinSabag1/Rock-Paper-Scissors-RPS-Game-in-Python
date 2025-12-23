@@ -1,5 +1,7 @@
 #######################################yarin sabag##########################################################
-#פרויקט משחק פייתון, אבן נייר ומספרים, את הפרוייקט הזה עשיתי לבד ללא חברי צוות
+#Python Game Project – Rock, Paper, and Scissors
+#This project was developed independently by me, without any team members.
+
 import random
 import time
 
@@ -7,7 +9,7 @@ user_counter=0
 pc_counter=0
 
 def user_win(user_input):
-    if win_rules[user_input] == pc_random_pick: # בודק האם המשתמש ניצח
+    if win_rules[user_input] == pc_random_pick: # Checks if user won
         global  user_counter , pc_counter   
         user_counter+=1
         pc_counter+=0
@@ -16,7 +18,7 @@ def user_win(user_input):
         print("pc score:",pc_counter,"user score: ",user_counter)
    
 def pc_win(pc_random_pick):
-    if win_rules[pc_random_pick] == user_input: # האם המחשב ניצח
+    if win_rules[pc_random_pick] == user_input: # Checks if the pc won
         global  user_counter , pc_counter 
         user_counter+=0
         pc_counter+=1
@@ -25,7 +27,7 @@ def pc_win(pc_random_pick):
         print("pc score:",pc_counter,"user score: ",user_counter)
    
 def tie(user_input , pc_random_pick):
-    if user_input == pc_random_pick : #האם זה תיקו
+    if user_input == pc_random_pick : #it is a tie?
         global  user_counter , pc_counter 
         user_counter+=1
         pc_counter+=1
@@ -44,36 +46,36 @@ print(
 
 while user_counter!=3 and pc_counter !=3:
     print("this is Rock, Paper, Scissors game\nRules:Rock beats Scissors\nScissors beats Paper\nPaper beats Rock\nYou will choose one option, and the computer will choose another\nThe winner is determined by the rules above\nyou will play 3 rounds untill there is a win or a tie")
-    user_input=input("so what will you want to pick? : ") #המשתמש מכניס את הבחירה שלו
+    user_input=input("so what will you want to pick? : ") #user input
     
-    user_input = user_input.strip() #להוריד רווחים עם יש
+    user_input = user_input.strip() #Remove spaces
     
-    user_input=user_input.capitalize()#בדיקה שהופכת אות ראשונה לגדולה
+    user_input=user_input.capitalize()#capitalizes the first letter
 
-    if (user_input!= "Rock") and (user_input!=  "Paper") and (user_input!= "Scissors") : #בדיקה שאין מילה אחרת חוץ מילות המשחק
+    if (user_input!= "Rock") and (user_input!=  "Paper") and (user_input!= "Scissors") : #Validates that the input contains only game words
         print("please write one of the keywords of the game with Capital first letter and without space : Rock, Paper, Scissors")
         break
 
-    words_of_item=["Rock", "Paper", "Scissors"] #מילות מפתח של המשחק
-    pc_random_pick=random.choice(words_of_item)#המחשב בחר רנדומלית תו מהרשימה
+    words_of_item=["Rock", "Paper", "Scissors"] #key words
+    pc_random_pick=random.choice(words_of_item)#pc random choice
 
-    for i in range (1,4) : ##טיימר ספירה לאחור עד לחשיפה של התוצאה של המחשב
+    for i in range (1,4) : #timer
         print (i)
         time.sleep(1)
 
-    win_rules = {                        #חוקי המשחק במילון
+    win_rules = {                        #  game ruls
         "Rock":"Scissors",
         "Scissors":"Paper",
         "Paper":"Rock"
     }
 
-    user_win(user_input)     #קריאות לפונקציות
+    user_win(user_input)     #Call functions
     pc_win(pc_random_pick)
     tie(user_input , pc_random_pick)
 
 ######################################################################################################################
-
-if user_counter>pc_counter : # בדיקה של המשחק הסופי האם הוא הפסיד ניצח או תיקו
+# who won? or lost? maybe a tie? - cheak what is the final result of the game
+if user_counter>pc_counter : 
     print("==========================================\nfinal result of 3 rounds : big win!!!\n " 
           
         "====================="
@@ -102,13 +104,15 @@ if pc_counter == user_counter and not pc_counter == 0 and user_counter==0:
 
         )
    
-          
-if pc_counter == 0 and user_counter==0: #אם המשתמש הכניס מילים אחרות מהמילים שהוגדרו בשביל לשחק אז הוא יצא מהלולאה בעזרת ברייק ויעבור לאיפ הזה שידפיס לו יציאה, לפני כן יודפס לו אבל הודעת שגיאה מה בדיוק לכתוב
+#If the user enters words other than the ones defined for the game, the loop will end using break, 
+# and the program will move to the if statement that prints the exit message. 
+# Before that, an error message will be printed explaining exactly what to type.
+         
+if pc_counter == 0 and user_counter==0: 
     print("exit")
      
           
-          
-
+# thank you!
 
 
 
